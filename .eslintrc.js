@@ -4,7 +4,7 @@ module.exports = {
     es2020: true,
     mocha: true
   },
-  extends: ['standard'],
+  extends: ['standard', 'prettier'],
   parserOptions: {
     ecmaVersion: 11,
     sourceType: 'module'
