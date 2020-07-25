@@ -1,12 +1,15 @@
 {
   "name": "spotify-wrapper",
   "version": "1.0.0",
-  "description": "A wrapper to work with the Spotify Web API",
-  "main": "index.js",
+  "description": "A project that creates a wrapper for Spotify API",
+  "main": "src/index.js",
   "scripts": {
     "clear": "rimraf lib",
-    "build": "npm run clear && ./node_modules/.bin/babel --out-dir lib src",
+    "build": "npm run clear && babel --out-dir lib src",
     "build:watch": "npm run build -- --watch",
+    "build:umd": "webpack --output-filename spotify-wrapper.umd.js",
+    "build:min:umd": "webpack --output-filename spotify-wrapper.umd.min.js -p",
+    "build:all": "npm run build && npm run build:umd && npm run build:min:umd",
     "lint": "./node_modules/.bin/eslint src/*.js",
     "prepush": "npm run lint",
     "test": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register",
@@ -24,30 +27,38 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/willianjusten/spotify-wrapper.git"
+    "url": "git+https://github.com/kauanmocelin/spotify-wrapper.git"
   },
   "keywords": [
     "js",
     "tdd",
     "spotify"
   ],
-  "author": "Kauan Mocelin <kauanmocelin@gmail.com> (https://willianjusten.com.br/)",
+  "author": "Kauan Mocelin <kauanmocelin@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/willianjusten/spotify-wrapper/issues"
-  },
-  "homepage": "https://github.com/willianjusten/spotify-wrapper#readme",
+  "homepage": "https://github.com/kauanmocelin/spotify-wrapper.git#readme",
   "devDependencies": {
-    "babel-cli": "^6.24.1",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^7.0.0",
     "babel-preset-env": "^1.3.2",
     "babel-register": "^6.24.0",
     "chai": "^3.5.0",
-    "eslint": "^4.0.0",
-    "eslint-config-airbnb-base": "^11.2.0",
-    "eslint-plugin-import": "^2.6.1",
+    "eslint": "^7.3.1",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
     "husky": "^0.11.9",
     "mocha": "^3.2.0",
+    "node-fetch": "^1.6.3",
     "nyc": "^10.2.0",
-    "rimraf": "^2.6.1"
-  }
+    "prettier": "^2.0.5",
+    "rimraf": "^2.6.1",
+    "sinon": "^2.1.0",
+    "sinon-chai": "^2.9.0",
+    "sinon-stub-promise": "^4.0.0",
+    "webpack": "^2.4.1"
+  },
+  "dependencies": {}
 }

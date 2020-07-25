@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spotify Wrapper Test</title>
+</head>
+<body>
+
+  <div id="albums"></div>
+
+  <script src="../dist/spotify-wrapper.umd.js"></script>
+
+  <script>
+    const spotify = new SpotifyWrapper({
+      token: 'BQAaOkbV3DgB04FRIzzbN7RtcSl_vUBVLS2LF4p07ZOqoeLVmKUfRCwt97QfyC7JRAojZnSXkqNdbDVMij202Ni1j43XpYhmxGjeAaa_dciJ6Kq0K652hnsaJg1CPpAdPc9z0saCtMbHjiCT0TehgKQ5FsIA'
+    })
+    const albums = spotify.search.albums('Natiruts');
+    const albumEl = document.getElementById('albums')
+
+
+    albums.then(data => {
+      markup = data.albums.items.map(item =>
+        `<img src='${item.images[0].url}' alt='${item.name}'/>`
+      ).join('')
+
+      albumEl.innerHTML = markup
+    })
+
+
+  </script>
+</body>
+</html>
